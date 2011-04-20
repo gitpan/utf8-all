@@ -1,0 +1,54 @@
+{
+   "abstract" : "turn on unicode. All of it.",
+   "author" : [
+      "Michael Schwern <mschwern@cpan.org>",
+      "Mike Doherty <doherty@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "utf8-all",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.31"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Encode" : 0,
+            "open" : 0,
+            "parent" : 0,
+            "perl" : "5.010",
+            "utf8" : 0
+         }
+      },
+      "test" : {
+         "requires" : {
+            "File::Find" : 0,
+            "File::Temp" : 0,
+            "PerlIO" : 0,
+            "Test::More" : 0
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/doherty/utf8-all/issues"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/doherty/utf8-all.git",
+         "web" : "https://github.com/doherty/utf8-all"
+      }
+   },
+   "version" : "0.001"
+}
+
