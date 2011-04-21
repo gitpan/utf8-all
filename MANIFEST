@@ -10,6 +10,7 @@ lib/utf8/all.pm
 t/00-compile.t
 t/ARGV.t
 t/ARGV_twice.t
+t/lexical-again.t
 t/lexical.t
 t/open.t
 t/utf8.t

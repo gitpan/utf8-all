@@ -1,4 +1,8 @@
 Revision history for Perl module utf8-all
 
+0.002     2011-04-21
+    * Add unimport()
+    * Expand test suite slightly
+
 0.001     2011-04-20
     * Split code out of perl5i

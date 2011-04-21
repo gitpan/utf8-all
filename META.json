@@ -5,7 +5,7 @@
       "Mike Doherty <doherty@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110440",
    "license" : [
       "perl_5"
    ],
@@ -43,12 +43,13 @@
       "bugtracker" : {
          "web" : "https://github.com/doherty/utf8-all/issues"
       },
+      "homepage" : "http://p3rl.org/utf8::all",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/doherty/utf8-all.git",
          "web" : "https://github.com/doherty/utf8-all"
       }
    },
-   "version" : "0.001"
+   "version" : "0.002"
 }
 

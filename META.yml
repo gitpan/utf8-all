@@ -11,7 +11,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110440'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -25,5 +25,6 @@ requires:
   utf8: 0
 resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
+  homepage: http://p3rl.org/utf8::all
   repository: git://github.com/doherty/utf8-all.git
-version: 0.001
+version: 0.002

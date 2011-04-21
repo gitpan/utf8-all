@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on unicode. All of it.
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 
 
 use Encode ();
@@ -13,14 +13,14 @@ use parent 'open';
 sub import {
     my $class = shift;
 
-    $^H{'utf8::all'} = 1; # Is that allowed?
+    $^H{'utf8::all'} = 1;
     
     # utf8 source code
     utf8::import($class);
-    
+
     # utf8 by default on filehandles
-    open::import($class, ":encoding(UTF-8)");
-    open::import($class, ":std");
+    open::import($class, ':encoding(UTF-8)');
+    open::import($class, ':std');
     {
         no strict 'refs'; ## no critic (TestingAndDebugging::ProhibitNoStrict)
         *{$class . '::open'} = \&utf8_open;
@@ -29,7 +29,12 @@ sub import {
     #utf8 in @ARGV
     state $have_encoded_argv = 0;
     _encode_argv() unless $have_encoded_argv++;
-    
+    return;
+}
+
+sub unimport {
+    $^H{'utf8::all'} = 0;
+    return;
 }
 
 sub utf8_open(*;$@) {  ## no critic (Subroutines::ProhibitSubroutinePrototypes)
@@ -45,7 +50,7 @@ sub utf8_open(*;$@) {  ## no critic (Subroutines::ProhibitSubroutinePrototypes)
     return $ret unless $ret;
 
     my $h = (caller 1)[10];
-    binmode $_[0], ":encoding(UTF-8)" if $h->{'utf8::all'};
+    binmode $_[0], ':encoding(UTF-8)' if $h->{'utf8::all'};
     return $ret;
 }
 
@@ -68,7 +73,7 @@ utf8::all - turn on unicode. All of it.
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -101,8 +106,11 @@ reason to:
     print length $text, "\n";         # 10, not 7!
 
 =for Pod::Coverage utf8_open
+unimport
 
 =head1 AVAILABILITY
+
+The project homepage is L<http://p3rl.org/utf8::all>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
