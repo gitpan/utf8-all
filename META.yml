@@ -1,17 +1,19 @@
 ---
-abstract: 'turn on unicode. All of it.'
+abstract: 'turn on Unicode - all of it'
 author:
   - 'Michael Schwern <mschwern@cpan.org>'
   - 'Mike Doherty <doherty@cpan.org>'
 build_requires:
   File::Find: 0
   File::Temp: 0
+  Module::Build: 0.3601
   PerlIO: 0
   Test::More: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.31
+  ExtUtils::MakeMaker: 6.30
+  Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110440'
+generated_by: 'Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,12 +21,15 @@ meta-spec:
 name: utf8-all
 requires:
   Encode: 0
+  charnames: 0
   open: 0
   parent: 0
   perl: 5.010
+  strict: 0
   utf8: 0
+  warnings: 0
 resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://p3rl.org/utf8::all
   repository: git://github.com/doherty/utf8-all.git
-version: 0.002
+version: 0.003

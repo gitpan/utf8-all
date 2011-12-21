@@ -2,11 +2,12 @@ package utf8::all;
 use strict;
 use warnings;
 use 5.010; # state
-# ABSTRACT: turn on unicode. All of it.
-our $VERSION = '0.002'; # VERSION
+# ABSTRACT: turn on Unicode - all of it
+our $VERSION = '0.003'; # VERSION
 
 
 use Encode ();
+use charnames ();
 use parent 'utf8';
 use parent 'open';
 
@@ -19,39 +20,15 @@ sub import {
     utf8::import($class);
 
     # utf8 by default on filehandles
-    open::import($class, ':encoding(UTF-8)');
-    open::import($class, ':std');
-    {
-        no strict 'refs'; ## no critic (TestingAndDebugging::ProhibitNoStrict)
-        *{$class . '::open'} = \&utf8_open;
-    }
+    open::import($class, ':encoding(UTF-8)', ':std');
 
-    #utf8 in @ARGV
+    # charnames (\N{...})
+    charnames::import($class, ':full', ':short');
+
+    # utf8 in @ARGV
     state $have_encoded_argv = 0;
     _encode_argv() unless $have_encoded_argv++;
     return;
-}
-
-sub unimport {
-    $^H{'utf8::all'} = 0;
-    return;
-}
-
-sub utf8_open(*;$@) {  ## no critic (Subroutines::ProhibitSubroutinePrototypes)
-    my $ret;
-    if( @_ == 1 ) {
-        $ret = CORE::open $_[0];
-    }
-    else {
-        $ret = CORE::open $_[0], $_[1], @_[2..$#_];
-    }
-
-    # Don't try to binmode an unopened filehandle
-    return $ret unless $ret;
-
-    my $h = (caller 1)[10];
-    binmode $_[0], ':encoding(UTF-8)' if $h->{'utf8::all'};
-    return $ret;
 }
 
 sub _encode_argv {
@@ -69,11 +46,11 @@ __END__
 
 =head1 NAME
 
-utf8::all - turn on unicode. All of it.
+utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -88,8 +65,10 @@ version 0.002
 L<utf8> allows you to write your Perl encoded in UTF-8. That means UTF-8
 strings, variable names, and regular expressions. C<utf8::all> goes further, and
 makes C<@ARGV> encoded in UTF-8, and filehandles are opened with UTF-8 encoding
-turned on by default (including STDIN, STDOUT, STDERR). If you I<don't> want
-UTF-8 for a particular filehandle, you'll have to set C<binmode $filehandle>.
+turned on by default (including STDIN, STDOUT, STDERR), and charnames are
+imported so C<\N{...}> sequences can be used to compile Unicode characters based
+on names. If you I<don't> want UTF-8 for a particular filehandle, you'll have to
+set C<binmode $filehandle>.
 
 The pragma is lexically-scoped, so you can do the following if you had some
 reason to:
