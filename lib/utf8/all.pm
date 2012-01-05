@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.003'; # VERSION
+our $VERSION = '0.004'; # VERSION
 
 
 use Encode ();
@@ -50,7 +50,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -89,7 +89,7 @@ unimport
 
 =head1 AVAILABILITY
 
-The project homepage is L<http://p3rl.org/utf8::all>.
+The project homepage is L<http://metacpan.org/release/utf8-all/>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN

@@ -13,12 +13,15 @@ configure_requires:
   ExtUtils::MakeMaker: 6.30
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: utf8-all
+no_index:
+  directory:
+    - corpus
 requires:
   Encode: 0
   charnames: 0
@@ -30,6 +33,6 @@ requires:
   warnings: 0
 resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
-  homepage: http://p3rl.org/utf8::all
+  homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: 0.003
+version: 0.004
