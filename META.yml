@@ -4,16 +4,18 @@ author:
   - 'Michael Schwern <mschwern@cpan.org>'
   - 'Mike Doherty <doherty@cpan.org>'
 build_requires:
+  Capture::Tiny: 0
   File::Find: 0
   File::Temp: 0
   Module::Build: 0.3601
   PerlIO: 0
   Test::More: 0
+  autodie: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
+  Dist::CheckConflicts: 0.02
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
+generated_by: 'Dist::Zilla version 4.300014, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -22,8 +24,12 @@ name: utf8-all
 no_index:
   directory:
     - corpus
+    - inc
+    - examples
 requires:
+  Dist::CheckConflicts: 0.02
   Encode: 0
+  Import::Into: 0
   charnames: 0
   open: 0
   parent: 0
@@ -35,4 +41,6 @@ resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: 0.004
+version: 0.005
+x_conflicts:
+  autodie: 2.11

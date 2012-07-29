@@ -3,31 +3,29 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.004'; # VERSION
+our $VERSION = '0.005'; # VERSION
 
 
+use Import::Into;
 use Encode ();
-use charnames ();
+use parent 'charnames';
 use parent 'utf8';
 use parent 'open';
+use parent 'warnings';
 
 sub import {
-    my $class = shift;
-
-    $^H{'utf8::all'} = 1;
-    
-    # utf8 source code
-    utf8::import($class);
-
-    # utf8 by default on filehandles
-    open::import($class, ':encoding(UTF-8)', ':std');
-
-    # charnames (\N{...})
-    charnames::import($class, ':full', ':short');
+    my $target = caller;
+    'utf8'->import::into($target);
+    'open'->import::into($target, qw{:encoding(UTF-8) :std});
+    'charnames'->import::into($target, qw{:full :short});
+    'warnings'->import::into($target, qw{FATAL utf8});
 
     # utf8 in @ARGV
     state $have_encoded_argv = 0;
     _encode_argv() unless $have_encoded_argv++;
+
+    $^H{'utf8::all'} = 1;
+
     return;
 }
 
@@ -50,7 +48,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
@@ -84,8 +82,13 @@ reason to:
     my $text = do { local $/; <$in>};
     print length $text, "\n";         # 10, not 7!
 
-=for Pod::Coverage utf8_open
-unimport
+=head1 INTERACTION WITH AUTODIE
+
+If you use L<autodie>, which is a great idea, you need to use at least version
+B<2.12>, released on L<June 26, 2012|https://metacpan.org/source/PJF/autodie-2.12/Changes#L3>.
+Otherwise, autodie obliterates the IO layers set by the L<open> pragma. See
+L<RT #54777|https://rt.cpan.org/Ticket/Display.html?id=54777> and
+L<GH #7|https://github.com/doherty/utf8-all/issues/7>.
 
 =head1 AVAILABILITY
 
@@ -93,12 +96,7 @@ The project homepage is L<http://metacpan.org/release/utf8-all/>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see L<http://search.cpan.org/dist/utf8-all/>.
-
-The development version lives at L<http://github.com/doherty/utf8-all>
-and may be cloned from L<git://github.com/doherty/utf8-all.git>.
-Instead of sending patches, please fork this project using the standard
-git and github infrastructure.
+site near you, or see L<https://metacpan.org/module/utf8::all/>.
 
 =head1 SOURCE
 
@@ -107,10 +105,8 @@ and may be cloned from L<git://github.com/doherty/utf8-all.git>
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<https://github.com/doherty/utf8-all/issues>.
+You can make new bug reports, and view existing ones, through the
+web interface at L<https://github.com/doherty/utf8-all/issues>.
 
 =head1 AUTHORS
 
