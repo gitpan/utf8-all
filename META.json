@@ -70,7 +70,7 @@
          "web" : "https://github.com/doherty/utf8-all"
       }
    },
-   "version" : "0.005",
+   "version" : "0.006",
    "x_conflicts" : {
       "autodie" : "2.11"
    }
