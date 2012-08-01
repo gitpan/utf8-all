@@ -49,12 +49,13 @@
       },
       "test" : {
          "requires" : {
-            "Capture::Tiny" : "0",
             "File::Find" : "0",
             "File::Temp" : "0",
             "PerlIO" : "0",
             "Test::More" : "0",
-            "autodie" : "0"
+            "Test::Warn" : "0",
+            "autodie" : "0",
+            "version" : "0.77"
          }
       }
    },
@@ -70,7 +71,7 @@
          "web" : "https://github.com/doherty/utf8-all"
       }
    },
-   "version" : "0.006",
+   "version" : "0.007",
    "x_conflicts" : {
       "autodie" : "2.11"
    }

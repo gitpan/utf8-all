@@ -4,13 +4,14 @@ author:
   - 'Michael Schwern <mschwern@cpan.org>'
   - 'Mike Doherty <doherty@cpan.org>'
 build_requires:
-  Capture::Tiny: 0
   File::Find: 0
   File::Temp: 0
   Module::Build: 0.3601
   PerlIO: 0
   Test::More: 0
+  Test::Warn: 0
   autodie: 0
+  version: 0.77
 configure_requires:
   Dist::CheckConflicts: 0.02
   Module::Build: 0.3601
@@ -41,6 +42,6 @@ resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: 0.006
+version: 0.007
 x_conflicts:
   autodie: 2.11
