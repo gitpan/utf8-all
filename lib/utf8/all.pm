@@ -3,15 +3,11 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.007'; # VERSION
+our $VERSION = '0.008'; # VERSION
 
 
 use Import::Into;
-use Encode ();
-use parent 'charnames';
-use parent 'utf8';
-use parent 'open';
-use parent 'warnings';
+use parent qw(Encode charnames utf8 open warnings feature);
 
 sub import {
     my $target = caller;
@@ -19,6 +15,13 @@ sub import {
     'open'->import::into($target, qw{:encoding(UTF-8) :std});
     'charnames'->import::into($target, qw{:full :short});
     'warnings'->import::into($target, qw{FATAL utf8});
+    'feature'->import::into($target, qw{unicode_strings}) if $^V >= v5.11.0;
+    'feature'->import::into($target, qw{unicode_eval fc}) if $^V >= v5.16.0;
+
+    {
+        no strict qw(refs); ## no critic (TestingAndDebugging::ProhibitNoStrict)
+        *{$target . '::readdir'} = \&_utf8_readdir;
+    }
 
     # utf8 in @ARGV
     state $have_encoded_argv = 0;
@@ -32,6 +35,20 @@ sub import {
 sub _encode_argv {
     $_ = Encode::decode('UTF-8', $_) for @ARGV;
     return;
+}
+
+sub _utf8_readdir(*) { ## no critic (Subroutines::ProhibitSubroutinePrototypes)
+    my $handle = shift;
+    if (wantarray) {
+        my @all_files  = CORE::readdir($handle);
+        $_ = Encode::decode('UTF-8', $_) for @all_files;
+        return @all_files;
+    }
+    else {
+        my $next_file = CORE::readdir($handle);
+        $next_file = Encode::decode('UTF-8', $next_file);
+        return $next_file;
+    }
 }
 
 
@@ -48,7 +65,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 

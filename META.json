@@ -5,7 +5,7 @@
       "Mike Doherty <doherty@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300014, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300023, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -39,6 +39,7 @@
             "Encode" : "0",
             "Import::Into" : "0",
             "charnames" : "0",
+            "feature" : "0",
             "open" : "0",
             "parent" : "0",
             "perl" : "5.010",
@@ -52,7 +53,8 @@
             "File::Find" : "0",
             "File::Temp" : "0",
             "PerlIO" : "0",
-            "Test::More" : "0",
+            "Test::Fatal" : "0",
+            "Test::More" : "0.96",
             "Test::Warn" : "0",
             "autodie" : "0",
             "version" : "0.77"
@@ -71,7 +73,7 @@
          "web" : "https://github.com/doherty/utf8-all"
       }
    },
-   "version" : "0.007",
+   "version" : "0.008",
    "x_conflicts" : {
       "autodie" : "2.11"
    }

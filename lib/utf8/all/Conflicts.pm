@@ -14,6 +14,7 @@ use Dist::CheckConflicts
         Encode
         Import::Into
         charnames
+        feature
         open
         parent
         strict
