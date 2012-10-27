@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.008'; # VERSION
+our $VERSION = '0.009'; # VERSION
 
 
 use Import::Into;
@@ -65,7 +65,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

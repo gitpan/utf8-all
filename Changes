@@ -1,5 +1,8 @@
 Revision history for Perl module utf8-all
 
+0.009     2012-10-27
+    * Don't depend on filesystem ordering [leont, GH #14]
+
 0.008     2012-10-24
     * Enable unicode_strings (see perldoc feature) [GH #2]
     * Enable unicode_eval (see perldoc feature) [GH #2]

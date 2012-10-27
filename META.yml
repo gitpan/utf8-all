@@ -44,6 +44,6 @@ resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: 0.008
+version: 0.009
 x_conflicts:
   autodie: 2.11
