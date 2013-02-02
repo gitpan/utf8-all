@@ -17,7 +17,7 @@ configure_requires:
   Dist::CheckConflicts: 0.02
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300023, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -44,6 +44,6 @@ resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: 0.009
+version: 0.010
 x_conflicts:
   autodie: 2.11

@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.009'; # VERSION
+our $VERSION = '0.010'; # VERSION
 
 
 use Import::Into;
@@ -55,6 +55,7 @@ sub _utf8_readdir(*) { ## no critic (Subroutines::ProhibitSubroutinePrototypes)
 1;
 
 __END__
+
 =pod
 
 =encoding utf-8
@@ -65,7 +66,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
@@ -147,4 +148,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
