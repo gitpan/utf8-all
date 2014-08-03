@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.011'; # VERSION
+our $VERSION = '0.012'; # VERSION
 
 
 use Import::Into;
@@ -21,7 +21,7 @@ sub import {
 
     {
         no strict qw(refs); ## no critic (TestingAndDebugging::ProhibitNoStrict)
-        *{$target . '::readdir'} = \&_utf8_readdir;
+        *{$target . '::readdir'} = \&_utf8_readdir unless $^O eq 'Win32';
     }
 
     # utf8 in @ARGV
@@ -62,7 +62,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -70,7 +70,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.011
+version 0.012
 
 =head1 SYNOPSIS
 
