@@ -10,6 +10,7 @@ my @files = (
     'lib/utf8/all.pm',
     't/00-compile.t',
     't/ARGV.t',
+    't/ARGV_nonmain.t',
     't/ARGV_twice.t',
     't/FATAL_utf8.t',
     't/autodie.t',

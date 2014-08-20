@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.012'; # VERSION
+our $VERSION = '0.013'; # VERSION
 
 
 use Import::Into;
@@ -24,17 +24,14 @@ sub import {
         *{$target . '::readdir'} = \&_utf8_readdir unless $^O eq 'Win32';
     }
 
-    # utf8 in @ARGV
+    # Make @ARGV utf-8 when called from the main package
     state $have_encoded_argv = 0;
-    _encode_argv() unless $have_encoded_argv++;
+    if ($target eq "main" && !$have_encoded_argv++) {
+        $_ = Encode::decode('UTF-8' ,$_) for @ARGV;
+    }
 
     $^H{'utf8::all'} = 1;
 
-    return;
-}
-
-sub _encode_argv {
-    $_ = Encode::decode('UTF-8', $_) for @ARGV;
     return;
 }
 
@@ -70,7 +67,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.012
+version 0.013
 
 =head1 SYNOPSIS
 
@@ -84,7 +81,8 @@ version 0.012
 
 L<utf8> allows you to write your Perl encoded in UTF-8. That means UTF-8
 strings, variable names, and regular expressions. C<utf8::all> goes further, and
-makes C<@ARGV> encoded in UTF-8, and filehandles are opened with UTF-8 encoding
+makes C<@ARGV> encoded in UTF-8 (only when called from the main package),
+and filehandles are opened with UTF-8 encoding
 turned on by default (including STDIN, STDOUT, STDERR), and charnames are
 imported so C<\N{...}> sequences can be used to compile Unicode characters based
 on names. If you I<don't> want UTF-8 for a particular filehandle, you'll have to

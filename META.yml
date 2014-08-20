@@ -7,7 +7,7 @@ build_requires:
   File::Spec: '0'
   IO::Handle: '0'
   IPC::Open3: '0'
-  Module::Build: '0.3601'
+  Module::Build: '0.28'
   PerlIO: '0'
   Test::Fatal: '0'
   Test::More: '0.96'
@@ -15,9 +15,9 @@ build_requires:
   autodie: '0'
   version: '0.77'
 configure_requires:
-  Module::Build: '0.3601'
+  Module::Build: '0.28'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.141520'
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -44,4 +44,4 @@ resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: '0.012'
+version: '0.013'
