@@ -18,11 +18,17 @@ t/ARGV.t
 t/ARGV_nonmain.t
 t/ARGV_twice.t
 t/FATAL_utf8.t
+t/all.t
 t/autodie.t
 t/charnames.t
+t/cwd.t
 t/fc.t
+t/find.t
+t/glob.t
 t/lexical-again.t
 t/lexical.t
+t/no_cwd.t
+t/no_find.t
 t/open.t
 t/readdir.t
 t/unicode_eval.t

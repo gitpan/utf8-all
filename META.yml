@@ -13,6 +13,7 @@ build_requires:
   Test::More: '0.96'
   Test::Warn: '0'
   autodie: '0'
+  constant: '0'
   version: '0.77'
 configure_requires:
   Module::Build: '0.28'
@@ -29,7 +30,9 @@ no_index:
     - inc
     - examples
 requires:
+  Cwd: '0'
   Encode: '0'
+  File::Find: '0'
   Import::Into: '0'
   Symbol: '0'
   charnames: '0'
@@ -44,4 +47,4 @@ resources:
   bugtracker: https://github.com/doherty/utf8-all/issues
   homepage: http://metacpan.org/release/utf8-all/
   repository: git://github.com/doherty/utf8-all.git
-version: '0.013'
+version: '0.014'

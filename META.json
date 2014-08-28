@@ -46,7 +46,9 @@
       },
       "runtime" : {
          "requires" : {
+            "Cwd" : "0",
             "Encode" : "0",
+            "File::Find" : "0",
             "Import::Into" : "0",
             "Symbol" : "0",
             "charnames" : "0",
@@ -69,6 +71,7 @@
             "Test::More" : "0.96",
             "Test::Warn" : "0",
             "autodie" : "0",
+            "constant" : "0",
             "version" : "0.77"
          }
       }
@@ -85,6 +88,6 @@
          "web" : "https://github.com/doherty/utf8-all"
       }
    },
-   "version" : "0.013"
+   "version" : "0.014"
 }
 
