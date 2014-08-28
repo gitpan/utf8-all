@@ -35,6 +35,7 @@ t/unicode_eval.t
 t/unicode_strings.t
 t/utf8.t
 xt/author/critic.t
+xt/author/no-tabs.t
 xt/author/test-eol.t
 xt/release/cpan-changes.t
 xt/release/dist-manifest.t
@@ -43,7 +44,6 @@ xt/release/kwalitee.t
 xt/release/meta-json.t
 xt/release/minimum-version.t
 xt/release/mojibake.t
-xt/release/no-tabs.t
 xt/release/pod-coverage.t
 xt/release/pod-linkcheck.t
 xt/release/pod-syntax.t

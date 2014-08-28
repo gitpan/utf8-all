@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.010; # state
 # ABSTRACT: turn on Unicode - all of it
-our $VERSION = '0.014'; # VERSION
+our $VERSION = '0.015'; # VERSION
 
 
 use Import::Into;
@@ -19,7 +19,11 @@ sub import {
     if (delete $options{':all'}) {
         $options{$_} = 1 for @KNOWN_OPTIONS;
     }
-    %options = %options{@KNOWN_OPTIONS}; # only keep known opts
+    # only keep known opts
+    foreach my $opt (keys %options) {
+        delete $options{$opt}
+            unless grep { $opt eq $_ } @KNOWN_OPTIONS
+    }
 
     # Enable features/pragmas in calling package
     my $target = caller;
@@ -177,7 +181,7 @@ utf8::all - turn on Unicode - all of it
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 
@@ -241,7 +245,7 @@ C<find> and C<finddepth>
 
 =item L<Cwd>
 
-C<wd>, C<fastcwd>, C<getcwd>, C<fastgetcwd>
+C<cwd>, C<fastcwd>, C<getcwd>, C<fastgetcwd>
 
 C<abs_path>, C<realpath>, C<fast_abs_path>
 
